@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaMedica.Dominio", "AgendaMedia.Dominio\AgendaMedica.Dominio.csproj", "{2331911D-F6FE-4006-8F8E-886C6227BD82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.Dominio", "AgendaMedia.Dominio\AgendaMedica.Dominio.csproj", "{2331911D-F6FE-4006-8F8E-886C6227BD82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaMedica.Infra.Orm", "AgendaMedica.Infra.Orm\AgendaMedica.Infra.Orm.csproj", "{718D6547-77E3-432D-AF4E-B646E8079EBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.Infra.Orm", "AgendaMedica.Infra.Orm\AgendaMedica.Infra.Orm.csproj", "{718D6547-77E3-432D-AF4E-B646E8079EBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaMedica.Aplicacao", "AgendaMedica.Aplicacao\AgendaMedica.Aplicacao.csproj", "{1C4A6426-6D07-4240-84EE-EC9DE64882C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.Aplicacao", "AgendaMedica.Aplicacao\AgendaMedica.Aplicacao.csproj", "{1C4A6426-6D07-4240-84EE-EC9DE64882C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Distribuição", "1- Distribuição", "{D2DA6197-F623-422F-B448-3A632DF2F170}"
 EndProject
@@ -17,13 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dominio", "3 - Dominio"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{802708FB-C150-467D-9A61-F978C8EB7EDA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Compartilhado", "Compartilhado", "{FD91CF4F-A909-4821-9440-478C88525457}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModuloMedico", "ModuloMedico", "{60F96882-91EC-4D80-B241-A8BF02231108}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModuloAtividade", "ModuloAtividade", "{A7E2AF9B-D5AB-4310-996D-AD49A13440E4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaMedica.WebApi", "AgendaMedica.WebApi\AgendaMedica.WebApi.csproj", "{02F167EA-5563-4451-AD67-78C6A22DD73C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.WebApi", "AgendaMedica.WebApi\AgendaMedica.WebApi.csproj", "{02F167EA-5563-4451-AD67-78C6A22DD73C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,9 +49,6 @@ Global
 		{2331911D-F6FE-4006-8F8E-886C6227BD82} = {FE7BDA7F-C92F-4955-A7D7-9005F3CDAA90}
 		{718D6547-77E3-432D-AF4E-B646E8079EBC} = {802708FB-C150-467D-9A61-F978C8EB7EDA}
 		{1C4A6426-6D07-4240-84EE-EC9DE64882C5} = {D01AE5E6-4734-4684-B1CE-36BA4CA33B6D}
-		{FD91CF4F-A909-4821-9440-478C88525457} = {802708FB-C150-467D-9A61-F978C8EB7EDA}
-		{60F96882-91EC-4D80-B241-A8BF02231108} = {802708FB-C150-467D-9A61-F978C8EB7EDA}
-		{A7E2AF9B-D5AB-4310-996D-AD49A13440E4} = {802708FB-C150-467D-9A61-F978C8EB7EDA}
 		{02F167EA-5563-4451-AD67-78C6A22DD73C} = {D2DA6197-F623-422F-B448-3A632DF2F170}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
