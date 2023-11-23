@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Compartilhado\" />
+    <Folder Include="ModuloMedico\" />
+    <Folder Include="ModuloAtividade\" />
+  </ItemGroup>
+
 </Project>
