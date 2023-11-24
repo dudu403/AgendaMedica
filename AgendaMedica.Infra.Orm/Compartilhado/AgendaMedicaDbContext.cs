@@ -1,5 +1,6 @@
 ﻿using AgendaMedica.Dominio.ModuloAtividade;
 using AgendaMedica.Dominio.ModuloMedico;
+using AgendaMedica.Infra.Orm.ModuloAtividade;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
@@ -19,28 +20,9 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Medico>(model =>
-            {
-                model.Property(x => x.Id).ValueGeneratedNever();
-                model.Property(x => x.Nome).IsRequired();
-                model.Property(x => x.CRM).IsRequired();
-                model.Property(x => x.telefone).IsRequired();
-                model.Property(x => x.endereco).IsRequired();
-                model.Property(x => x.email).IsRequired();
+            modelBuilder.ApplyConfiguration(new MapeadorMedicoOrm());
 
-            });
-
-            modelBuilder.Entity<Atividade>(model =>
-            {
-                model.Property(x => x.Id).ValueGeneratedNever();
-                //model.Property(x => x.Medico).ValueGeneratedNever();
-                model.Property(x => x.Data).ValueGeneratedNever();
-                model.Property(x => x.HorarioInicio).ValueGeneratedNever();
-                model.Property(x => x.HorarioTernino).ValueGeneratedNever();
-                model.Property(x => x.Categoria).HasConversion<int>();
-                model.HasOne(x => x.Medico).WithMany().HasForeignKey(x => x.MedicoID)
-                .HasConstraintName("FK_TBMedico_TBAtividade").OnDelete(DeleteBehavior.NoAction);
-            });
+            modelBuilder.ApplyConfiguration(new MapeadorAtividadeOrm());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -46,7 +46,7 @@ namespace AgendaMedica.Infra.Orm.Migrations
 
                     b.HasIndex("MedicoID");
 
-                    b.ToTable("Atividades");
+                    b.ToTable("Atividades", (string)null);
                 });
 
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloMedico.Medico", b =>
@@ -76,7 +76,7 @@ namespace AgendaMedica.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medicos");
+                    b.ToTable("Medicos", (string)null);
                 });
 
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloAtividade.Atividade", b =>

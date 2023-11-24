@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,14 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
         {
             var optionsBuilder = new DbContextOptionsBuilder<AgendaMedicaDbContext>();
 
-            optionsBuilder.UseSqlServer(@"Data Source=(LOCALDB)\MSSQLLOCALDB;Initial Catalog=AgendaMedica;Integrated Security=True");
+            IConfiguration configuracao = new ConfigurationBuilder()
+              .SetBasePath(Directory.GetCurrentDirectory())
+              .AddJsonFile("appsettings.json")
+              .Build();
+
+            var connectionString = configuracao.GetConnectionString("SqlServer");
+
+            optionsBuilder.UseSqlServer(connectionString);
 
             var dbContext = new AgendaMedicaDbContext(optionsBuilder.Options);
 

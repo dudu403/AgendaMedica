@@ -12,4 +12,10 @@
     <Folder Include="ModuloMedico\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
