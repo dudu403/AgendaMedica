@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(AgendaMedicaDbContext))]
-    [Migration("20231124055655_Config-Inicial")]
-    partial class ConfigInicial
+    [Migration("20231124064602_Inicial-Config")]
+    partial class InicialConfig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,11 +28,13 @@ namespace AgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloAtividade.Atividade", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Categoria")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
 
                     b.Property<TimeSpan>("HorarioInicio")
                         .HasColumnType("time");
@@ -40,15 +42,12 @@ namespace AgendaMedica.Infra.Orm.Migrations
                     b.Property<TimeSpan>("HorarioTernino")
                         .HasColumnType("time");
 
-                    b.Property<DateTime>("data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("medicoId")
+                    b.Property<Guid>("MedicoID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("medicoId");
+                    b.HasIndex("MedicoID");
 
                     b.ToTable("Atividades");
                 });
@@ -56,7 +55,6 @@ namespace AgendaMedica.Infra.Orm.Migrations
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloMedico.Medico", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CRM")
@@ -86,13 +84,14 @@ namespace AgendaMedica.Infra.Orm.Migrations
 
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloAtividade.Atividade", b =>
                 {
-                    b.HasOne("AgendaMedica.Dominio.ModuloMedico.Medico", "medico")
+                    b.HasOne("AgendaMedica.Dominio.ModuloMedico.Medico", "Medico")
                         .WithMany()
-                        .HasForeignKey("medicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicoID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_TBMedico_TBAtividade");
 
-                    b.Navigation("medico");
+                    b.Navigation("Medico");
                 });
 #pragma warning restore 612, 618
         }

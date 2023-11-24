@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AgendaMedica.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class ConfigInicial : Migration
+    public partial class InicialConfig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,27 +32,26 @@ namespace AgendaMedica.Infra.Orm.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    medicoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     HorarioInicio = table.Column<TimeSpan>(type: "time", nullable: false),
                     HorarioTernino = table.Column<TimeSpan>(type: "time", nullable: false),
-                    Categoria = table.Column<int>(type: "int", nullable: false)
+                    Categoria = table.Column<int>(type: "int", nullable: false),
+                    MedicoID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Atividades", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Atividades_Medicos_medicoId",
-                        column: x => x.medicoId,
+                        name: "FK_TBMedico_TBAtividade",
+                        column: x => x.MedicoID,
                         principalTable: "Medicos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Atividades_medicoId",
+                name: "IX_Atividades_MedicoID",
                 table: "Atividades",
-                column: "medicoId");
+                column: "MedicoID");
         }
 
         /// <inheritdoc />

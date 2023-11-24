@@ -10,10 +10,11 @@ namespace AgendaMedica.Dominio.ModuloAtividade
 {
     public class Atividade : Entidade
     {
-        public Medico medico { get; set; }
-        public DateTime data { get; set; }
+        public Medico Medico { get; set; }
+        public DateTime Data { get; set; }
         public TimeSpan HorarioInicio { get; set; }
         public TimeSpan HorarioTernino { get; set; }
         public CategoriaEnum Categoria { get; set; }
+        public Guid MedicoID { get; set; }
     }
 }
