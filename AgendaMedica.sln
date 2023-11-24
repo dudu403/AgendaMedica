@@ -9,15 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.Infra.Orm", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.Aplicacao", "AgendaMedica.Aplicacao\AgendaMedica.Aplicacao.csproj", "{1C4A6426-6D07-4240-84EE-EC9DE64882C5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Distribuição", "1- Distribuição", "{D2DA6197-F623-422F-B448-3A632DF2F170}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Distribuição", "3 - Distribuição", "{D2DA6197-F623-422F-B448-3A632DF2F170}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Aplicação", "2 - Aplicação", "{D01AE5E6-4734-4684-B1CE-36BA4CA33B6D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dominio", "3 - Dominio", "{FE7BDA7F-C92F-4955-A7D7-9005F3CDAA90}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Dominio", "4 - Dominio", "{FE7BDA7F-C92F-4955-A7D7-9005F3CDAA90}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{802708FB-C150-467D-9A61-F978C8EB7EDA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5- Infra", "5- Infra", "{802708FB-C150-467D-9A61-F978C8EB7EDA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.WebApi", "AgendaMedica.WebApi\AgendaMedica.WebApi.csproj", "{02F167EA-5563-4451-AD67-78C6A22DD73C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{24E90C33-C559-4306-96A0-9988E364F1BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaMedica.ConsoleApp", "AgendaMedica.ConsoleApp\AgendaMedica.ConsoleApp.csproj", "{EAC9CAD5-46D3-4399-9D66-05C7130E1620}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{02F167EA-5563-4451-AD67-78C6A22DD73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02F167EA-5563-4451-AD67-78C6A22DD73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02F167EA-5563-4451-AD67-78C6A22DD73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC9CAD5-46D3-4399-9D66-05C7130E1620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC9CAD5-46D3-4399-9D66-05C7130E1620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC9CAD5-46D3-4399-9D66-05C7130E1620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC9CAD5-46D3-4399-9D66-05C7130E1620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{718D6547-77E3-432D-AF4E-B646E8079EBC} = {802708FB-C150-467D-9A61-F978C8EB7EDA}
 		{1C4A6426-6D07-4240-84EE-EC9DE64882C5} = {D01AE5E6-4734-4684-B1CE-36BA4CA33B6D}
 		{02F167EA-5563-4451-AD67-78C6A22DD73C} = {D2DA6197-F623-422F-B448-3A632DF2F170}
+		{EAC9CAD5-46D3-4399-9D66-05C7130E1620} = {24E90C33-C559-4306-96A0-9988E364F1BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {352CD6B5-7F2D-4E00-AC5B-3450EF13FE84}

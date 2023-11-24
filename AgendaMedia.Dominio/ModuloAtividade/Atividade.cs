@@ -13,7 +13,7 @@ namespace AgendaMedica.Dominio.ModuloAtividade
         public Medico medico { get; set; }
         public DateTime data { get; set; }
         public TimeSpan HorarioInicio { get; set; }
-        public string TipoAtendimento { get; set; }
-       
+        public TimeSpan HorarioTernino { get; set; }
+        public CategoriaEnum Categoria { get; set; }
     }
 }
