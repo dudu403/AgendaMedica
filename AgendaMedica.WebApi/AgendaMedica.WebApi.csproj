@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AgendaMedica.Aplicacao\AgendaMedica.Aplicacao.csproj" />
     <ProjectReference Include="..\AgendaMedica.Infra.Orm\AgendaMedica.Infra.Orm.csproj" />
   </ItemGroup>
 

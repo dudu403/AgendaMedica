@@ -1,4 +1,5 @@
-﻿using AgendaMedica.Dominio.ModuloAtividade;
+﻿using AgendaMedica.Dominio.Compartilhado;
+using AgendaMedica.Dominio.ModuloAtividade;
 using AgendaMedica.Dominio.ModuloMedico;
 using AgendaMedica.Infra.Orm.ModuloAtividade;
 using Microsoft.EntityFrameworkCore;
@@ -6,13 +7,8 @@ using System.Reflection.Metadata;
 
 namespace AgendaMedica.Infra.Orm.Compartilhado
 {
-    public class AgendaMedicaDbContext : DbContext
+    public class AgendaMedicaDbContext : DbContext, IContextoPersistencia
     {
-
-        public DbSet<Medico> Medicos { get; set; }
-
-        public DbSet<Atividade> Atividades { get; set; }
-
         public AgendaMedicaDbContext(DbContextOptions options) : base(options)
         {
         
@@ -25,6 +21,12 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
             modelBuilder.ApplyConfiguration(new MapeadorAtividadeOrm());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public async Task<bool> GravarAsync()
+        {
+            await SaveChangesAsync();
+            return true;
         }
     }
 }

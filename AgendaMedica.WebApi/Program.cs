@@ -1,3 +1,10 @@
+using AgendaMedica.Aplicacao.ModuloMedico;
+using AgendaMedica.Dominio.Compartilhado;
+using AgendaMedica.Dominio.ModuloMedico;
+using AgendaMedica.Infra.Orm.Compartilhado;
+using AgendaMedica.Infra.Orm.ModuloMedico;
+using Microsoft.EntityFrameworkCore;
+
 namespace AgendaMedica.WebApi
 {
     public class Program
@@ -9,6 +16,19 @@ namespace AgendaMedica.WebApi
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            var connectionString = builder.Configuration.GetConnectionString("SqlServer");
+
+            builder.Services.AddDbContext<IContextoPersistencia, AgendaMedicaDbContext>(optionsBuilder =>
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+
+            });
+
+            builder.Services.AddTransient<IRepositorioMedico, RepositorioMedicoOrm>();
+            builder.Services.AddTransient<ServicoMedico>();
+
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
