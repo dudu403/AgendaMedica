@@ -3,10 +3,20 @@ using AgendaMedica.Dominio.Compartilhado;
 using AgendaMedica.Dominio.ModuloMedico;
 using AgendaMedica.Infra.Orm.Compartilhado;
 using AgendaMedica.Infra.Orm.ModuloMedico;
+using AgendaMedica.WebApi.ViewModels;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgendaMedica.WebApi
 {
+    public class MedicoProfile : Profile
+    {
+        public MedicoProfile()
+        {
+            CreateMap<Medico, ListarMedicoViewModel>();
+        }
+
+    }
     public class Program
     {
         public static void Main(string[] args)
@@ -27,6 +37,10 @@ namespace AgendaMedica.WebApi
 
             builder.Services.AddTransient<IRepositorioMedico, RepositorioMedicoOrm>();
             builder.Services.AddTransient<ServicoMedico>();
+
+            builder.Services.AddAutoMapper(config => {
+                config.AddProfile<MedicoProfile>();
+            });
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
