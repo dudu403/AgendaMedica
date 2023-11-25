@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.WebApi", "Agen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{24E90C33-C559-4306-96A0-9988E364F1BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaMedica.ConsoleApp", "AgendaMedica.ConsoleApp\AgendaMedica.ConsoleApp.csproj", "{EAC9CAD5-46D3-4399-9D66-05C7130E1620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgendaMedica.ConsoleApp", "AgendaMedica.ConsoleApp\AgendaMedica.ConsoleApp.csproj", "{EAC9CAD5-46D3-4399-9D66-05C7130E1620}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

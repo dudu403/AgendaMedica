@@ -20,8 +20,9 @@
 
     public class ExcluirMedicoViewModel
     {
-
+        public Guid Id { get; set; }
     }
+
 
     public class ListarMedicoViewModel
     {

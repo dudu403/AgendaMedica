@@ -39,22 +39,28 @@ namespace AgendaMedica.Aplicacao.ModuloMedico
             var resultadoValidacao = ValidarMedico(medico);
 
             if (resultadoValidacao.IsFailed)
-                return Result.Fail(resultadoValidacao.Errors);
+                return Result.Fail<Medico>(resultadoValidacao.Errors);
 
-             repositorioMedico.Editar(medico);
+            repositorioMedico.Editar(medico);
 
-             await contextoPersistencia.GravarAsync();
+            await contextoPersistencia.GravarAsync();
 
             return Result.Ok(medico);
         }
 
-        public async Task<Result> ExcluirAsync(Medico medico)
+        public async Task<bool> ExcluirAsync(Guid id)
         {
-            repositorioMedico.Excluir(medico);
+            var medicoExistente = await repositorioMedico.SelecionarPorIdAsync(id);
 
+            if (medicoExistente == null)
+            {
+                return false; 
+            }
+
+            repositorioMedico.Excluir(medicoExistente);
             await contextoPersistencia.GravarAsync();
 
-            return Result.Ok();
+            return true; 
         }
 
         public async Task<Result<List<Medico>>> SelecionarTodosAsync()

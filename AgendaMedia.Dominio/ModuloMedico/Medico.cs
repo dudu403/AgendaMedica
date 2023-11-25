@@ -1,4 +1,5 @@
 ﻿using AgendaMedica.Dominio.Compartilhado;
+using AgendaMedica.Dominio.ModuloAtividade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
