@@ -17,7 +17,7 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
 
         public RepositorioBase(IContextoPersistencia ctx)
         {
-            this.dbContext = (AgendaMedicaDbContext)dbContext;
+            this.dbContext = (AgendaMedicaDbContext)ctx;
             this.registros = dbContext.Set<TEntidade>();
         }
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(AgendaMedicaDbContext))]
-    [Migration("20231124064602_Inicial-Config")]
-    partial class InicialConfig
+    [Migration("20231125020807_Config-inicial")]
+    partial class Configinicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace AgendaMedica.Infra.Orm.Migrations
 
                     b.HasIndex("MedicoID");
 
-                    b.ToTable("Atividades");
+                    b.ToTable("TBAtividade", (string)null);
                 });
 
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloMedico.Medico", b =>
@@ -79,7 +79,7 @@ namespace AgendaMedica.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medicos");
+                    b.ToTable("TBMedico", (string)null);
                 });
 
             modelBuilder.Entity("AgendaMedica.Dominio.ModuloAtividade.Atividade", b =>

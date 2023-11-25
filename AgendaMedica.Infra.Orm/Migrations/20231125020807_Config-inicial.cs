@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AgendaMedica.Infra.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class InicialConfig : Migration
+    public partial class Configinicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Medicos",
+                name: "TBMedico",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -24,11 +24,11 @@ namespace AgendaMedica.Infra.Orm.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Medicos", x => x.Id);
+                    table.PrimaryKey("PK_TBMedico", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Atividades",
+                name: "TBAtividade",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -40,17 +40,17 @@ namespace AgendaMedica.Infra.Orm.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Atividades", x => x.Id);
+                    table.PrimaryKey("PK_TBAtividade", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TBMedico_TBAtividade",
                         column: x => x.MedicoID,
-                        principalTable: "Medicos",
+                        principalTable: "TBMedico",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Atividades_MedicoID",
-                table: "Atividades",
+                name: "IX_TBAtividade_MedicoID",
+                table: "TBAtividade",
                 column: "MedicoID");
         }
 
@@ -58,10 +58,10 @@ namespace AgendaMedica.Infra.Orm.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Atividades");
+                name: "TBAtividade");
 
             migrationBuilder.DropTable(
-                name: "Medicos");
+                name: "TBMedico");
         }
     }
 }
