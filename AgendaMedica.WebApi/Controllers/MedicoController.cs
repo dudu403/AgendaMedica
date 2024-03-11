@@ -1,78 +1,98 @@
 using AgendaMedica.Aplicacao.ModuloMedico;
+using AgendaMedica.Dominio.ModuloMedico;
 using AgendaMedica.WebApi.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AgendaMedica.WebApi.Controllers
+namespace EAgendaMedica.WebApi.Controllers
 {
-    [ApiController]
     [Route("api/medicos")]
-    public class MedicoController : ControllerBase
+    [ApiController]
+    public class MedicoController : ApiControllerBase
     {
         private readonly ServicoMedico servicoMedico;
         private readonly IMapper mapeador;
 
-        public MedicoController(ServicoMedico servicoMedico, IMapper mapeador) 
+        public MedicoController(ServicoMedico servicoMedico, IMapper mapeador)
         {
             this.servicoMedico = servicoMedico;
             this.mapeador = mapeador;
         }
+
         [HttpGet]
+        [ProducesResponseType(typeof(List<ListarMedicoViewModel>), 200)]
+        [ProducesResponseType(typeof(string[]), 500)]
         public async Task<IActionResult> SelecionarTodos()
         {
-            var medicos = await servicoMedico.SelecionarTodosAsync();
+            var medicosResult = await servicoMedico.SelecionarTodosAsync();
 
-            var viewModel = mapeador.Map<List<ListarMedicoViewModel>> (medicos.Value);
+            var viewModel = mapeador.Map<List<ListarMedicoViewModel>>(medicosResult.Value);
+
             return Ok(viewModel);
         }
 
-        [HttpGet("Vizualização-PorId/{id}")]
+        [HttpGet("visualizacao-completa/{id}")]
+        [ProducesResponseType(typeof(VisualizarMedicoViewModel), 200)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
         public async Task<IActionResult> SelecionarPorId(Guid id)
         {
-            var medicosResults = await servicoMedico.SelecionarPorIdAsync(id);
+            var medicoResult = await servicoMedico.SelecionarPorIdAsync(id);
 
-            if (medicosResults == null)
-            {
-                return NotFound();
-            }
+            if (medicoResult.IsFailed) return NotFound(medicoResult.Errors);
 
-            var viewModel = mapeador.Map<VisualizarMedicoViewModel>(medicosResults.Value);
+            var viewModel = mapeador.Map<VisualizarMedicoViewModel>(medicoResult.Value);
+
+            return Ok(viewModel);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(InserirMedicoViewModel), 200)]
+        [ProducesResponseType(typeof(string[]), 400)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
+        public async Task<IActionResult> Inserir(InserirMedicoViewModel viewModel)
+        {
+            var medico = mapeador.Map<Medico>(viewModel);
+
+            var medicoResult = await servicoMedico.InserirAsync(medico);
+
+            if (medicoResult.IsFailed) return BadRequest(medicoResult.Errors);
+
             return Ok(viewModel);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Editar(Guid id, [FromBody] EditarMedicoViewModel medicoViewModel)
+        [ProducesResponseType(typeof(EditarMedicoViewModel), 200)]
+        [ProducesResponseType(typeof(string[]), 400)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
+        public async Task<IActionResult> Editar(Guid id, EditarMedicoViewModel viewModel)
         {
-            if (medicoViewModel == null)
-            {
-                return BadRequest("Dados inválidos para edição");
-            }
+            var selecacaoMedicoResult = await servicoMedico.SelecionarPorIdAsync(id);
 
-            var medicoExistenteResult = await servicoMedico.SelecionarPorIdAsync(id);
+            if (selecacaoMedicoResult.IsFailed) return NotFound(selecacaoMedicoResult.Errors);
 
-            if (medicoExistenteResult.IsFailed)
-            {
-                return NotFound();
-            }
+            var medico = mapeador.Map(viewModel, selecacaoMedicoResult.Value);
 
-            var medicoExistente = medicoExistenteResult.Value;
+            var medicoResult = await servicoMedico.EditarAsync(medico);
 
-            medicoExistente.Nome = medicoViewModel.Nome;
-            medicoExistente.CRM = medicoViewModel.CRM;
-            medicoExistente.telefone = medicoViewModel.telefone;
-            medicoExistente.endereco = medicoViewModel.endereco;
-            medicoExistente.email = medicoViewModel.email;
+            if (medicoResult.IsFailed) return BadRequest(medicoResult.Errors);
 
-            var resultadoEdicao = await servicoMedico.EditarAsync(medicoExistente);
-
-            if (resultadoEdicao.IsFailed)
-            {
-                return BadRequest(resultadoEdicao.Errors);
-            }
-
-            var viewModel = mapeador.Map<VisualizarMedicoViewModel>(resultadoEdicao.Value);
             return Ok(viewModel);
         }
 
+        [HttpDelete("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(typeof(string[]), 404)]
+        [ProducesResponseType(typeof(string[]), 500)]
+        public async Task<IActionResult> Excluir(Guid id)
+        {
+            var medicoResult = await servicoMedico.ExcluirAsync(id);
+
+            if (medicoResult.IsFailed) return NotFound(medicoResult.Errors);
+
+            return Ok();
+        }
     }
 }

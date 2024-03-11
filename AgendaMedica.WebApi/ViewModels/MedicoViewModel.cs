@@ -41,5 +41,6 @@
         public string telefone { get; set; }
         public string endereco { get; set; }
         public string email { get; set; }
+        public List<ListarAtividadeViewModel> Atividades { get; set; }
     }
 }

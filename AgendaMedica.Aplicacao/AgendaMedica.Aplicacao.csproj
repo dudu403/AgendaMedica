@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Compartilhado\" />
-    <Folder Include="ModuloAtividade\" />
   </ItemGroup>
 
   <ItemGroup>

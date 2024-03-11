@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AgendaMedica.Infra.Orm.Compartilhado
 {
-    
+
     public class RepositorioBase<TEntidade> where TEntidade : Entidade
     {
         protected AgendaMedicaDbContext dbContext;

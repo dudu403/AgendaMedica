@@ -11,7 +11,7 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
     {
         public AgendaMedicaDbContext(DbContextOptions options) : base(options)
         {
-        
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AgendaMedica.Dominio.Compartilhado
 {
@@ -10,6 +6,8 @@ namespace AgendaMedica.Dominio.Compartilhado
     {
         void Editar(TEntidade registro);
         void Excluir(TEntidade registro);
+
+        TEntidade SelecionarPorId(Guid id);
         Task<bool> InserirAsync(TEntidade registro);
         Task<TEntidade> SelecionarPorIdAsync(Guid id);
         Task<List<TEntidade>> SelecionarTodosAsync();
