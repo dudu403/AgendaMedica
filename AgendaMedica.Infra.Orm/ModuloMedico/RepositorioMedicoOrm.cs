@@ -1,7 +1,9 @@
 ﻿using AgendaMedica.Dominio.Compartilhado;
 using AgendaMedica.Dominio.ModuloMedico;
 using AgendaMedica.Infra.Orm.Compartilhado;
+using EAgendaMedica.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;

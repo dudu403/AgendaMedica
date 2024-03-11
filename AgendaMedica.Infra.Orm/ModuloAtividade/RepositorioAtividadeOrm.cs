@@ -1,7 +1,9 @@
 ﻿using AgendaMedica.Dominio.Compartilhado;
 using AgendaMedica.Dominio.ModuloAtividade;
 using AgendaMedica.Infra.Orm.Compartilhado;
+using EAgendaMedica.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,6 @@ namespace AgendaMedica.Infra.Orm.ModuloAtividade
     {
         public RepositorioAtividadeOrm(IContextoPersistencia dbContext) : base(dbContext)
         {
-
         }
 
         public override Atividade SelecionarPorId(Guid id) => registros.SingleOrDefault(x => x.Id == id);

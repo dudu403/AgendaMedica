@@ -1,15 +1,9 @@
 ﻿using AgendaMedica.Dominio.Compartilhado;
+using AgendaMedica.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AgendaMedica.Infra.Orm.Compartilhado
+namespace EAgendaMedica.Infra.Orm.Compartilhado
 {
-
     public class RepositorioBase<TEntidade> where TEntidade : Entidade
     {
         protected AgendaMedicaDbContext dbContext;
@@ -24,6 +18,7 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
         public async Task<bool> InserirAsync(TEntidade registro)
         {
             await registros.AddAsync(registro);
+
             return true;
         }
 
@@ -51,6 +46,5 @@ namespace AgendaMedica.Infra.Orm.Compartilhado
         {
             return await registros.ToListAsync();
         }
-
     }
 }
