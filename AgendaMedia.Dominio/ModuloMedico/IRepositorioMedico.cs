@@ -9,6 +9,5 @@ namespace AgendaMedica.Dominio.ModuloMedico
 {
     public interface IRepositorioMedico : IRepositorioBase<Medico>
     {
-
     }
 }

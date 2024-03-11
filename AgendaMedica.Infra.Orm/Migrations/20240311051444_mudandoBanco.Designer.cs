@@ -4,6 +4,7 @@ using AgendaMedica.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(AgendaMedicaDbContext))]
-    partial class AgendaMedicaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240311051444_mudandoBanco")]
+    partial class mudandoBanco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +46,8 @@ namespace AgendaMedica.Infra.Orm.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MedicoID");
 
                     b.ToTable("TBAtividade", (string)null);
                 });
@@ -90,6 +95,18 @@ namespace AgendaMedica.Infra.Orm.Migrations
                     b.HasIndex("MedicosId");
 
                     b.ToTable("TBMedico_TBAtividade", (string)null);
+                });
+
+            modelBuilder.Entity("AgendaMedica.Dominio.ModuloAtividade.Atividade", b =>
+                {
+                    b.HasOne("AgendaMedica.Dominio.ModuloMedico.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_TBMedico_TBAtividade");
+
+                    b.Navigation("Medico");
                 });
 
             modelBuilder.Entity("AtividadeMedico", b =>

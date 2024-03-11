@@ -33,27 +33,11 @@ namespace AgendaMedica.WebApi.Controllers
 
             if (medicosResults == null)
             {
-                
                 return NotFound();
             }
 
             var viewModel = mapeador.Map<VisualizarMedicoViewModel>(medicosResults.Value);
             return Ok(viewModel);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Excluir(Guid id)
-        {
-            var exclusaoBemSucedida = await servicoMedico.ExcluirAsync(id);
-
-            if (exclusaoBemSucedida)
-            {
-                return NoContent();
-            }
-            else
-            {
-                return NotFound(); 
-            }
         }
 
         [HttpPut("{id}")]

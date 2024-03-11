@@ -15,6 +15,7 @@ namespace AgendaMedica.Infra.Orm.ModuloAtividade
             builder.Property(x => x.telefone).IsRequired();
             builder.Property(x => x.endereco).IsRequired();
             builder.Property(x => x.email).IsRequired();
+            builder.HasMany(x => x.Atividades).WithMany(x => x.Medicos).UsingEntity(x => x.ToTable("TBMedico_TBAtividade"));
         }
     }
 }

@@ -4,6 +4,7 @@ using AgendaMedica.Infra.Orm.Compartilhado;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgendaMedica.Infra.Orm.Migrations
 {
     [DbContext(typeof(AgendaMedicaDbContext))]
-    partial class AgendaMedicaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240311052652_mudandoBancoOutraVez")]
+    partial class mudandoBancoOutraVez
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

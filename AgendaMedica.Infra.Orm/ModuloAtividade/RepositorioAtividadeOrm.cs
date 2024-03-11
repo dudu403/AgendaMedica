@@ -1,6 +1,7 @@
 ﻿using AgendaMedica.Dominio.Compartilhado;
 using AgendaMedica.Dominio.ModuloAtividade;
 using AgendaMedica.Infra.Orm.Compartilhado;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,12 @@ namespace AgendaMedica.Infra.Orm.ModuloAtividade
         {
 
         }
+
+        public override Atividade SelecionarPorId(Guid id) => registros.SingleOrDefault(x => x.Id == id);
+
+        public override async Task<Atividade> SelecionarPorIdAsync(Guid id) => await registros
+            .Include(a => a.Medicos)
+            .ThenInclude(m => m.Atividades)
+            .SingleOrDefaultAsync(a => a.Id == id);
     }
 }

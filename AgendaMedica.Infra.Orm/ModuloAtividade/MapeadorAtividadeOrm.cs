@@ -16,8 +16,7 @@ namespace AgendaMedica.Infra.Orm.ModuloAtividade
             builder.Property(x => x.HorarioInicio).IsRequired();
             builder.Property(x => x.HorarioTernino).IsRequired();
             builder.Property(x => x.Categoria).HasConversion<int>();
-            builder.HasOne(x => x.Medico).WithMany().HasForeignKey(x => x.MedicoID)
-            .HasConstraintName("FK_TBMedico_TBAtividade").OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(x => x.Medicos).WithMany(x => x.Atividades).UsingEntity(x => x.ToTable("TBMedico_TBAtividade"));
         }
     }
 }

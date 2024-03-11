@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AgendaMedia.Dominio\AgendaMedica.Dominio.csproj" />
+    <ProjectReference Include="..\AgendaMedica.ConsoleApp\AgendaMedica.ConsoleApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -48,19 +48,17 @@ namespace AgendaMedica.Aplicacao.ModuloMedico
             return Result.Ok(medico);
         }
 
-        public async Task<bool> ExcluirAsync(Guid id)
+        public async Task<Result> ExcluirAsync(Guid id)
         {
-            var medicoExistente = await repositorioMedico.SelecionarPorIdAsync(id);
+            var medico = await repositorioMedico.SelecionarPorIdAsync(id);
 
-            if (medicoExistente == null)
-            {
-                return false; 
-            }
+            if (medico == null) return Result.Fail($"Medico {id} não encontrado");
 
-            repositorioMedico.Excluir(medicoExistente);
+            repositorioMedico.Excluir(medico);
+
             await contextoPersistencia.GravarAsync();
 
-            return true; 
+            return Result.Ok();
         }
 
         public async Task<Result<List<Medico>>> SelecionarTodosAsync()

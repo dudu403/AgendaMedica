@@ -11,7 +11,6 @@ namespace AgendaMedica.Dominio.ModuloAtividade
     {
         public ValidadorAtividade()
         {
-            RuleFor(x => x.Medico).NotNull().NotEmpty();
             RuleFor(x => x.Data).NotNull().NotEmpty();
             RuleFor(x => x.HorarioInicio).NotNull().NotEmpty();
             RuleFor(x => x.HorarioTernino).NotNull().NotEmpty();

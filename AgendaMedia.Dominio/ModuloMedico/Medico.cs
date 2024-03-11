@@ -15,5 +15,11 @@ namespace AgendaMedica.Dominio.ModuloMedico
         public string telefone { get; set; }
         public string endereco { get; set; }
         public string email { get; set; }
+        public List<Atividade> Atividades { get; set; }
+
+        public Medico()
+        {
+            Atividades = new List<Atividade>();
+        }
     }
 }
