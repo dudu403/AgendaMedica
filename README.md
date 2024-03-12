@@ -20,7 +20,3 @@ O backend do Agendamedica2.0 é uma API desenvolvida em C# utilizando o framewor
 - **Entity Framework Core:** ORM (Object-Relational Mapping) utilizado para mapear objetos para as tabelas do banco de dados.
 - **SQL Server:** Banco de dados relacional utilizado para armazenar os dados da aplicação.
 - **Swagger:** Ferramenta utilizada para documentar a API RESTful, facilitando o entendimento e o consumo dos endpoints.
-
-## Execução do Projeto
-
-Para executar o backend do projeto Agendamedica2.0, basta abrir a solução `Agendamedica2.0.sln` no Visual Studio e pressionar F5 para iniciar a aplicação.
